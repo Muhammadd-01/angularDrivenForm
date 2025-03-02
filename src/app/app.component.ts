@@ -1,12 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [FormsModule, CommonModule], // Add CommonModule
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'templateDrivenForm';
+  user = {
+    name: '',
+    email: '',
+    gender: '',
+    message: '',
+  };
+  submitted = false;
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      this.submitted = true; // Show submitted data
+    }
+  }
 }
